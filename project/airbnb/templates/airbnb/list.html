@@ -1,0 +1,9 @@
+{% if results %}
+    <ul>
+    {% for location in results %}
+        <li><a href="/airbnb/{{ location.id }}/">{{ location.host_name }}, {{ location.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No search reuslts.</p>
+{% endif %}

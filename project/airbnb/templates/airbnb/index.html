@@ -1,0 +1,19 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'airbnb/style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+	<form action="{% url 'airbnb:search' query%}" method="GET">
+      <input type="text" placeholder="Search.." name="query" value="{{request.GET.query}}">
+      <button type="submit"><i class="fa fa-search"></i></button>
+	</form>
+</div>
+
+{% if couple_of_locations %}
+    <ul>
+    {% for location in couple_of_locations %}
+        <li><a href="/airbnb/{{ location.id }}/">{{ location.host_name }}, {{ location.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No locations are available.</p>
+{% endif %}
